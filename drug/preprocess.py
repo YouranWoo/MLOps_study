@@ -73,4 +73,4 @@ def test_preprocess():
     target = np.array([1])
     print(pp.restore_target(target))
 
-test_preprocess()
+# test_preprocess()
