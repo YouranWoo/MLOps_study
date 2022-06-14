@@ -3,7 +3,7 @@ import numpy as np
 
 class preprocess_drugdata():
     """
-    preprocess의 기준은 drug_train.ipynb에서 학습/테스트 데이터 전처리에 근거함
+    preprocess의 기준은 drug_train.ipynb에서 학습/테스트 데이터 전처리에 기반
     """
 
     def __init__(self, args):
@@ -49,19 +49,18 @@ class preprocess_drugdata():
     def vectorize_na2k(self):
         return np.array([(self.na2k - self.na2k_min) / (self.na2k_max - self.na2k_min)])
 
-    def restore_target(self, target_vector):
-        target = np.reshape(target_vector, (1,))[0]
-        if target == 0:
-            return 'DrugY'
-        elif target == 1:
-            return 'DrugA'
-        elif target == 2:
-            return 'DrugB'
-        elif target == 3:
-            return 'DrugC'
-        else: #target == 4
-            return 'DrugX'
-
+def restore_target(target_vector):
+    target = np.reshape(target_vector, (1,))[0]
+    if target == 0:
+        return 'DrugY'
+    elif target == 1:
+        return 'DrugA'
+    elif target == 2:
+        return 'DrugB'
+    elif target == 3:
+        return 'DrugC'
+    else: #target == 4
+        return 'DrugX'
 
 def test_preprocess():
     args = {'age': 20, 'sex' : 'F', 'bp': 'BP_HIGH', 'cholesterol':'Cholesterol_NORMAL', 'na_to_k':10}
@@ -72,5 +71,7 @@ def test_preprocess():
 
     target = np.array([1])
     print(pp.restore_target(target))
-
-# test_preprocess()
+    """
+    "age=20&sex='F'&bp='BP_HIGH'&cholesterol='Cholesterol_NORMAL'&na_to_k=10"
+    """
+    
