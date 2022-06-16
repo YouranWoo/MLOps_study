@@ -21,9 +21,9 @@ To enable them in other operations, rebuild TensorFlow with the appropriate comp
 2022-06-16 14:23:51.448678: I tensorflow/core/platform/cpu_feature_guard.cc:142] This TensorFlow binary is optimized with oneAPI Deep Neural Network Library (oneDNN) to use the following CPU instructions in performance-critical operations:  SSE4.1 SSE4.2
 To enable them in other operations, rebuild TensorFlow with the appropriate compiler flags.
  * Debugger is active!
- * Debugger PIN: 719-260-491
-
-
+ * Debugger PIN: 719-260-491 
+  
+  
 
 ## 2. Make an API call with cURL and wait the response.
 ### < Example >
