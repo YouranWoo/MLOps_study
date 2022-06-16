@@ -8,11 +8,17 @@ class preprocess_drugdata():
 
     def __init__(self, args):
         self.args = args
-        self.sex = self.args['sex']
-        self.age = self.args['age']
-        self.bp = self.args['bp']
-        self.chol = self.args['cholesterol']
-        self.na2k = self.args['na_to_k']
+        # self.sex = self.args['sex']
+        # self.age = self.args['age']
+        # self.bp = self.args['bp']
+        # self.chol = self.args['cholesterol']
+        # self.na2k = self.args['na_to_k']
+        self.sex = self.args[0]
+        self.age = self.args[1]
+        self.bp = self.args[2]
+        self.chol = self.args[3]
+        self.na2k = self.args[4]
+
         self.na2k_min = 6.269
         self.na2k_max = 38.247
 
@@ -50,7 +56,8 @@ class preprocess_drugdata():
         return np.array([(self.na2k - self.na2k_min) / (self.na2k_max - self.na2k_min)])
 
 def restore_target(target_vector):
-    target = np.reshape(target_vector, (1,))[0]
+    target = np.argmax(target_vector, axis=1)
+
     if target == 0:
         return 'DrugY'
     elif target == 1:
@@ -63,15 +70,17 @@ def restore_target(target_vector):
         return 'DrugX'
 
 def test_preprocess():
-    args = {'age': 20, 'sex' : 'F', 'bp': 'BP_HIGH', 'cholesterol':'Cholesterol_NORMAL', 'na_to_k':10}
+    # args = {'age': 20, 'sex' : 'F', 'bp': 'BP_HIGH', 'cholesterol':'Cholesterol_NORMAL', 'na_to_k':10}
+    args = ['F', 20, 'BP_HIGH', 'Cholesterol_NORMAL', 10]  
     pp = preprocess_drugdata(args)
     result = pp.preprocess()
     print(result)
     print(result.shape)
 
     target = np.array([1])
-    print(pp.restore_target(target))
+    print(restore_target(target))
     """
     "age=20&sex='F'&bp='BP_HIGH'&cholesterol='Cholesterol_NORMAL'&na_to_k=10"
     """
-    
+
+# test_preprocess()
