@@ -1,6 +1,7 @@
 # 참고
 # https://keraskorea.github.io/posts/2018-10-27-Keras%20%EB%AA%A8%EB%8D%B8%EC%9D%84%20REST%20API%EB%A1%9C%20%EB%B0%B0%ED%8F%AC%ED%95%B4%EB%B3%B4%EA%B8%B0/
 # https://blog.naver.com/PostView.nhn?blogId=wideeyed&logNo=221350966399
+# 강의 [Fastcampus] 머신러닝 서비스 구축을 위한 실전 MLOps 올인원 패키지 Online.
 
 from flask import Flask, jsonify, request
 import tensorflow as tf
